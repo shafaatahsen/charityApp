@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using CharityApp.Models;
 
 namespace CharityApp.Services
@@ -12,9 +13,18 @@ namespace CharityApp.Services
         {
             return projects;
         }
-        
-        public 
-        
+
+        public Project GetById(int id)
+        {
+            return projects.Where(project => project.id == id).FirstOrDefault();
+        }
+
+        public Project Create(Project project)
+        {
+            project.Id = Count++;
+            projects.Add(proj);
+            return proj;
+        }
         
         
         
