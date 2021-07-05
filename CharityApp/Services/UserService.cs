@@ -18,7 +18,7 @@ namespace CharityApp.Services
 
         public User GetById(int id)
         {
-            return users.Where(user => user.Id == id).FirstOrDefault();
+            return users.FirstOrDefault(user => user.Id == id);
         }
 
         public User Create(User user)
@@ -30,7 +30,7 @@ namespace CharityApp.Services
 
         public void Update(int id, User user)
         {
-            User found = users.Where(user => user.Id == id).FirstOrDefault();
+            User found = users.FirstOrDefault(u => user.Id == id);
             found.FirstName = user.FirstName;
             found.LastName = user.LastName;
             found.Email = user.Email;

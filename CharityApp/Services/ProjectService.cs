@@ -16,16 +16,24 @@ namespace CharityApp.Services
 
         public Project GetById(int id)
         {
-            return projects.Where(project => project.id == id).FirstOrDefault();
+            return projects.FirstOrDefault(project => project.Id == id);
         }
 
-        public Project Create(Project project)
+        public Project Create(Project proj)
         {
-            project.Id = Count++;
+            proj.Id = Count++;
             projects.Add(proj);
             return proj;
         }
         
+        public void Update(int id, Project proj)
+        {
+            Project found = projects.FirstOrDefault(p => proj.Id == id);
+            found.Name = proj.Name;
+            found.TargetAmount = proj.TargetAmount;
+            found.CurrentAmount = proj.CurrentAmount;
+            found.Finished = proj.Finished;
+        }
         
         
     }
